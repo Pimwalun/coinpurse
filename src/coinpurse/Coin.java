@@ -4,7 +4,7 @@ package coinpurse;
  * A coin with a monetary value and currency.
  * @author Pimwalun Witchawanitchanun
  */
-public class Coin implements Comparable<Coin> {
+public class Coin implements Comparable<Coin>, Valuable{
 	public static final String DEFAULT_CURRENCY = "Baht";
     /** Value of the coin. */
     private final double value;
@@ -16,8 +16,7 @@ public class Coin implements Comparable<Coin> {
      * @param value is value for a coin.
      */
     public Coin(double value) {
-        this.value = value;
-        this.currency = DEFAULT_CURRENCY;
+        this(value, DEFAULT_CURRENCY);
     }
     
     /**
@@ -43,7 +42,7 @@ public class Coin implements Comparable<Coin> {
      * @return the currency of coin.
      */
     public String getCurrency() { 
-    	return currency;
+    	return this.currency;
     }
         
     /**
