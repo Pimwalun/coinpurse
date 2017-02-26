@@ -1,9 +1,9 @@
 package coinpurse;
 
 import java.util.List;
-
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *  A coin purse contains coins.
@@ -66,7 +66,7 @@ public class Purse {
      *  @return true if purse is full.
      */
     public boolean isFull() {
-        return money.size() == capacity;
+        return money.size() >= capacity;
     }
 
     /** 
@@ -78,11 +78,18 @@ public class Purse {
      */
     public boolean insert( Valuable value ) {
         // if the purse is already full then can't insert anything.
-    	if ( isFull() ) return false;
-    	if ( value.getValue() <= 0) return false;
-    	if ( value == null ) return false;
-    	money.add(value);
-        return true;
+    	if (value.getValue() <= 0) return false;
+		if (!isFull()) {
+			this.money.add(value);
+			Collections.sort(this.money, new Comparator<Valuable>() {
+				@Override
+				public int compare(Valuable o1, Valuable o2) {
+					return Double.compare(o1.getValue(), o2.getValue());
+				}
+			});
+			return true;
+		}
+		return false;
     }
     
     /**  
