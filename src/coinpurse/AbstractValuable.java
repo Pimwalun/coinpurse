@@ -1,15 +1,16 @@
 package coinpurse;
 
 /**
- * 
+ * This class this will be the parent class for Coin and BankNote 
+ * (and may be used by other kinds of money).
  * @author Pimwalun Witchawanitchanun
- *
  */
 public abstract class AbstractValuable implements Valuable{
-	double value;
-	String currency;
+	protected final double value;
+	protected final String currency;
 	public AbstractValuable(double value,String currency) {
-		super();
+		this.value = value;
+		this.currency = currency;
 	}
 
 	/**
@@ -59,5 +60,4 @@ public abstract class AbstractValuable implements Valuable{
 	public String getCurrency(){
 		return this.currency;
 	}
-
 }

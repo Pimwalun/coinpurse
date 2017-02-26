@@ -5,8 +5,8 @@ package coinpurse;
  * @author Pimwalun Witchawanitchanun
  */
 public class Coin extends AbstractValuable{
-    
-    /**
+
+	/**
      * A coin with given value using the default currency.
      * @param value is value for a coin.
      */
@@ -21,7 +21,7 @@ public class Coin extends AbstractValuable{
      */
     public Coin(double value, String currency) {
     	super(value, currency);
-    }        
+    } 
     
     /**
      * Get a string representation of Coin.

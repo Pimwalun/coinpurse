@@ -1,7 +1,7 @@
 package coinpurse;
 
 /**
- * 
+ * This class create coin and banknote of Thailand.
  * @author Pimwalun Witchawanitchanun
  *
  */
@@ -13,20 +13,32 @@ public class ThaiMoneyFactory extends MoneyFactory {
 
 	@Override
 	protected Valuable createMoney(double value) {
+		Valuable valuable = null;
 		for (double m : thaiMoney) {
 			if (value == m) {
 				if (value >= 20) {
-					return new BankNote(value, DEFAULT_CURRENCY, ++this.nextSerialNumber);
+					valuable = new BankNote(value, DEFAULT_CURRENCY, ++this.nextSerialNumber);
 				} else if (value == 1 || value == 2 || value == 5 || value == 10) {
-					return new Coin(value, DEFAULT_CURRENCY);
+					valuable = new Coin(value, DEFAULT_CURRENCY);
 				} else if (value == 0.25 || value == 0.5) {
-					value *= 100;
-					return new Coin(value, DIME_CURRENCY);
+					valuable = new Coin(value*100, DIME_CURRENCY);
 				} else {
 					throw new IllegalArgumentException();
 				}
 			}
 		}
-		return null;
+		return valuable;
+	}
+	
+	public static void main(String[] arg) throws IllegalArgumentException{
+		MoneyFactory factory = MoneyFactory.getInstance();
+		Valuable m = factory.createMoney(5);
+		System.out.println(m.toString());
+		Valuable m2 = factory.createMoney("1000.0");
+		System.out.println(m2.toString());
+		Valuable m3 = factory.createMoney(500);
+		System.out.println(m3.toString());
+		Valuable m4 = factory.createMoney(20);
+		System.out.println(m4.toString());
 	}
 }

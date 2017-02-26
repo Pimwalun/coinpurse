@@ -1,16 +1,15 @@
 package coinpurse;
 
 /**
- * 
+ * This class for creating money of other countries.
  * @author Pimwalun Witchawanitchanun
- *
  */
 public abstract class MoneyFactory {
 	private static MoneyFactory moneyFactory;
 
 	/**
-	 * 
-	 * @return
+	 * Returns an object of Thai or Malay
+	 * @return get an instance of MoneyFactory
 	 */
 	public static MoneyFactory getInstance() {
 		if (moneyFactory == null)
@@ -19,15 +18,17 @@ public abstract class MoneyFactory {
 	}
 
 	/**
-	 * 
-	 * @param value
+	 * create a new money object in the local currency.
+	 * @param value is a new money object in the local currency.
+	 * @throws IllegalArgumentException if the value is not a valid currency money.
 	 */
-	protected abstract Valuable createMoney(double value);
+	protected abstract Valuable createMoney(double value) throws IllegalArgumentException;
 
 	/**
-	 * 
-	 * @param value
-	 * @return
+	 * Create coin and banknote of Malaysia
+	 * @param value is coin and banknote to insert
+	 * @return valuable if value >=1, it create banknote of Malaysia
+	 * 					if value <1, it create coin of Malaysia
 	 */
 	protected Valuable createMoney(String value) {
 		try {
@@ -38,8 +39,10 @@ public abstract class MoneyFactory {
 		}
 	}
 
-	static  void setMoneyFactory(MoneyFactory factory){
+	/**
+	 * Set MoneyFacetory depend on purse.properties
+	 */
+	protected static void setMoneyFactory(MoneyFactory factory){
 		MoneyFactory.moneyFactory = factory;		
 	}
-
 }

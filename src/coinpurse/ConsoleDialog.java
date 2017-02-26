@@ -6,12 +6,11 @@ import java.util.Scanner;
  * User Interface for the Coin Purse. This class provides simple interactive
  * dialog for inserting and removing money to/from the purse, and displaying the
  * balance.
- * 
  * @author Pimwalun Witchawanitchanun
  */
 public class ConsoleDialog {
 	// default currency for this dialog
-	public static final String CURRENCY = "Baht";
+	public static String CURRENCY = "Baht";
 	// use a single java.util.Scanner object for reading all input
 	private static Scanner console = new Scanner(System.in);
 	private Purse purse;
@@ -19,7 +18,6 @@ public class ConsoleDialog {
 
 	/**
 	 * Initialize a new Purse dialog.
-	 * 
 	 * @param purse is the Purse to interact with.
 	 */
 	public ConsoleDialog(Purse purse) {
@@ -37,7 +35,6 @@ public class ConsoleDialog {
 			// print a list of choices
 			System.out.print("\nPlease enter d (deposit), w (withdraw), ? (inquiry), or q (quit): ");
 			choice = console.nextLine().trim().toLowerCase();
-
 			if (choice.equals("d"))
 				depositDialog();
 			else if (choice.equals("w"))
@@ -62,8 +59,8 @@ public class ConsoleDialog {
 		String inline = console.nextLine();
 		// parse input line into numbers
 		Scanner scanline = new Scanner(inline);
-		Valuable val = null;
 		while (scanline.hasNextDouble()) {
+			Valuable val;
 			double value = scanline.nextDouble();
 			try {
 				val = moneyFactory.createMoney(value);
@@ -74,7 +71,6 @@ public class ConsoleDialog {
 			System.out.printf("Deposit %s... ", val.toString());
 			boolean ok = purse.insert(val);
 			System.out.println((ok ? "ok" : "FAILED"));
-			
 		}
 		if (scanline.hasNext())
 			System.out.println("Invalid input: " + scanline.next());
@@ -103,5 +99,4 @@ public class ConsoleDialog {
 		// discard remainder of the input line so we don't read it again
 		console.nextLine();
 	}
-
 }

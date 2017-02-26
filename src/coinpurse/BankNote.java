@@ -29,7 +29,7 @@ public class BankNote extends AbstractValuable{
      * Get the serial of banknote.
      * @return the serial of banknote.
      */
-	public long getSerial(){
+	public long getSerialNumber(){
 		return this.serialNumber;
 	}
 	
@@ -38,6 +38,6 @@ public class BankNote extends AbstractValuable{
      * @return string representation of BankNote.
      */
 	public String toString(){
-		return value + "-" + currency + "note [" + serialNumber + "]"; 
+		return this.value + "-" + this.currency + "note [" + this.serialNumber + "]"; 
 	}
 }

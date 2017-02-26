@@ -11,7 +11,6 @@ import java.util.Comparator;
  *  and check if the purse is full.
  *  When you withdraw money, the coin purse decides which
  *  coins to remove.
- *  
  *  @author Pimwalun Witchawanitchanun
  */
 public class Purse {
@@ -21,6 +20,7 @@ public class Purse {
      *  Capacity is set when the purse is created and cannot be changed.
      */
     private final int capacity;
+    
     /** 
      *  Create a purse with a specified capacity.
      *  @param capacity is maximum number of coins you can put in purse.
@@ -73,7 +73,7 @@ public class Purse {
      * Insert a coin into the purse.
      * The coin is only inserted if the purse has space for it
      * and the coin has positive value.  No worthless coins!
-     * @param value is a Coin object to insert into purse
+     * @param value is a Valuable object to insert into purse
      * @return true if value inserted, false if can't insert
      */
     public boolean insert( Valuable value ) {

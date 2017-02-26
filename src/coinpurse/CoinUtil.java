@@ -79,7 +79,6 @@ public class CoinUtil{
 		values = makeInternationalCoins();
 		System.out.print("monetary objects = "); printList(values," ");
 		sumByCurrency(values);
-		
 	}
 	
 	/** Make a list of coins containing different currencies. */
@@ -106,7 +105,6 @@ public class CoinUtil{
 		while( iter.hasNext() ) { 
 			System.out.print(iter.next());
 			if (iter.hasNext()) System.out.print(separator);
-			
 		}
 		System.out.println(); // end the line
 	}

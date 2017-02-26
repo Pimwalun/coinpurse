@@ -18,7 +18,6 @@ public class Main {
 		ResourceBundle bundle = ResourceBundle.getBundle("purse");
 		String factoryclass = bundle.getString("moneyfactory");
 		MoneyFactory instance = null;
-
 		try {
 			instance = (MoneyFactory) Class.forName(factoryclass).newInstance();
 		} catch (ClassCastException cce) {
